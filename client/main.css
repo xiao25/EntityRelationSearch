@@ -1,1 +1,65 @@
-/* CSS declarations go here */
+#search {
+  flex: 1;
+  position: relative;
+  padding: 20px 20px 60px 20px;
+  overflow: auto;
+}
+
+#search__input-fields {
+}
+
+#search__suggest-keywords {
+}
+
+#search-button {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+}
+
+#search-result {
+  padding: 30px;
+  background-color: #F2F2F2;
+}
+
+.search-result__title {
+  margin-bottom: 10px;
+}
+
+.search-result__item {
+  background-color: white;
+  margin-bottom: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  max-height: 30px;
+  overflow: hidden;
+
+  -webkit-transition: margin 200ms ease, max-height 200ms ease;
+  -moz-transition: margin 200ms ease, max-height 200ms ease;
+  -ms-transition: margin 200ms ease, max-height 200ms ease;
+  -o-transition: margin 200ms ease, max-height 200ms ease;
+  transition: margin 200ms ease, max-height 200ms ease;
+}
+
+.search-result__item > .search-result__item__overview {
+  display: block;
+}
+.search-result__item > .search-result__item__detail {
+  display: none;
+}
+
+/* .search-result__item:hover, */
+.search-result__item.search-result__item--active {
+  margin: 30px -20px 30px -20px;
+  max-height: 1000px;
+}
+
+/* .search-result__item:hover > .search-result__item__overview, */
+.search-result__item.search-result__item--active > .search-result__item__overview {
+  display: none;
+}
+
+/* .search-result__item:hover > .search-result__item__detail, */
+.search-result__item.search-result__item--active > .search-result__item__detail {
+  display: block;
+}

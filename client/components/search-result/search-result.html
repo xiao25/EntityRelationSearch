@@ -1,0 +1,8 @@
+<template name="search_result">
+  <div id="search-result">
+    <div class="search-result__title"><b>Search Results</b><hr/></div>
+    {{#each listItems}}
+      {{> search_result__item this}}
+    {{/each}}
+  </div>
+</template>
