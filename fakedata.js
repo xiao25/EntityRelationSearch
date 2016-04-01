@@ -4,11 +4,77 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
+					'type':'keywokeyword'
+				},
+				{
+					'word':'of',
+					'type':'none'
+				},
+				{
+					'word':'nocturnal',
 					'type':'em'
+				},
+				{
+					'word':'asthma',
+					'type':'entity'
+				},
+				{
+					'word':'using',
+					'type':'vp'
+				},
+				{
+					'word':'bathyphase',
+					'type':'none'
+				},
+				{
+					'word':'of',
+					'type':'none'
+				},
+				{
+					'word':'circadian',
+					'type':'none'
+				},
+				{
+					'word':'rhythm',
+					'type':'none'
+				},
+				{
+					'word':'in',
+					'type':'none'
+				},
+				{
+					'word':'peak',
+					'type':'none'
+				},
+				{
+					'word':'expiratory',
+					'type':'none'
+				},
+				{
+					'word':'flow',
+					'type':'none'
+				},
+				{
+					'word':'rate',
+					'type':'none'
+				},
+
+			],
+			'link':'test'
+		},
+		{
+			'tokens':[
+				{
+					'word':'Theophylline',
+					'type':'entity'
+				},
+				{
+					'word':'chronotherapy',
+					'type':'keywokeyword'
 				},
 				{
 					'word':'of',
@@ -72,11 +138,11 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
-					'type':'em'
+					'type':'keywokeyword'
 				},
 				{
 					'word':'of',
@@ -140,11 +206,11 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
-					'type':'em'
+					'type':'keyword'
 				},
 				{
 					'word':'of',
@@ -208,11 +274,11 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
-					'type':'em'
+					'type':'keyword'
 				},
 				{
 					'word':'of',
@@ -276,11 +342,11 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
-					'type':'em'
+					'type':'keyword'
 				},
 				{
 					'word':'of',
@@ -344,11 +410,11 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
-					'type':'em'
+					'type':'keyword'
 				},
 				{
 					'word':'of',
@@ -412,11 +478,11 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
-					'type':'em'
+					'type':'keyword'
 				},
 				{
 					'word':'of',
@@ -480,11 +546,11 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
-					'type':'em'
+					'type':'keyword'
 				},
 				{
 					'word':'of',
@@ -548,11 +614,11 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
-					'type':'em'
+					'type':'keyword'
 				},
 				{
 					'word':'of',
@@ -616,11 +682,11 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
-					'type':'em'
+					'type':'keyword'
 				},
 				{
 					'word':'of',
@@ -684,11 +750,11 @@ let rps = {
 			'tokens':[
 				{
 					'word':'Theophylline',
-					'type':'entity1'
+					'type':'entity'
 				},
 				{
 					'word':'chronotherapy',
-					'type':'em'
+					'type':'keyword'
 				},
 				{
 					'word':'of',
@@ -747,7 +813,7 @@ let rps = {
 			'link':'test'
 		}
 	]
-}
+};
 
 
 let keywrods_suggested = [
@@ -765,4 +831,6 @@ let keywrods_suggested = [
 	'kinetics',
 	'plasma',
 	'injection'
-]
+];
+
+export { rps, keywrods_suggested };

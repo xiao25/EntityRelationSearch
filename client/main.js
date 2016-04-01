@@ -4,7 +4,31 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './components/search/search.js';
 import './components/search-result/search-result.js';
 
+import { rps as fakedata, keywrods_suggested } from '../fakedata.js';
+
 import './main.html';
+
+const tplName = 'body',
+      tpl = Template[tplName];
+
+const suggestedKeywords = new ReactiveVar(keywrods_suggested);
+
+const resultData = new ReactiveVar(Object.keys(fakedata).map((key) => {
+  return {
+    key,
+    value: fakedata[key]
+  };
+}));
+
+tpl.helpers({
+  suggestedKeywords () {
+    return suggestedKeywords;
+  },
+  resultData () {
+    return resultData;
+  }
+});
+
 /*
 
 Template.hello.onCreated(function helloOnCreated() {

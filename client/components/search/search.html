@@ -1,18 +1,18 @@
 <template name="search">
   <div id="search">
     <div id="search__input-fields">
-      <div><b>Search</b></div>
-
+      <div class="search__input-fields__title">Search</div>
+      <hr/>
       <!-- Simple Textfield -->
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" type="text" id="field1" autofocus="autofocus">
-        <label class="mdl-textfield__label" for="field1">Field1...</label>
+        <label class="mdl-textfield__label" for="field1">Entity1...</label>
       </div>
 
       <!-- Simple Textfield -->
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" type="text" id="field2">
-        <label class="mdl-textfield__label" for="field2">Field2...</label>
+        <label class="mdl-textfield__label" for="field2">Entity2...</label>
       </div>
 
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -23,98 +23,20 @@
     </div>
 
     <ul id="search__suggest-keywords" class="mdl-list">
-      <div><b>Suggested Keywords</b></div>
-
+      <div class="search__suggest-keywords__title">Suggested Keywords</div>
+      <hr/>
+      {{#each suggestedKeywords}}
       <li class="mdl-list__item">
         <span class="mdl-list__item-primary-content">
-          Bryan Cranston
+          {{this}}
         </span>
         <span class="mdl-list__item-secondary-action">
-          <button class="mdl-button mdl-js-button mdl-button--icon">
+          <button class="search__suggest-keywords__action-add mdl-button mdl-js-button mdl-button--icon" data-keyword="{{this}}">
             <i class="material-icons">add</i>
           </button>
         </span>
       </li>
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          Aaron Paul
-        </span>
-        <span class="mdl-list__item-secondary-action">
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">add</i>
-          </button>
-        </span>
-      </li>
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          Bob Odenkirk
-        </span>
-        <span class="mdl-list__item-secondary-action">
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">add</i>
-          </button>
-        </span>
-      </li>
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          Bryan Cranston
-        </span>
-        <span class="mdl-list__item-secondary-action">
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">add</i>
-          </button>
-        </span>
-      </li>
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          Aaron Paul
-        </span>
-        <span class="mdl-list__item-secondary-action">
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">add</i>
-          </button>
-        </span>
-      </li>
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          Bob Odenkirk
-        </span>
-        <span class="mdl-list__item-secondary-action">
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">add</i>
-          </button>
-        </span>
-      </li>
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          Bryan Cranston
-        </span>
-        <span class="mdl-list__item-secondary-action">
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">add</i>
-          </button>
-        </span>
-      </li>
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          Aaron Paul
-        </span>
-        <span class="mdl-list__item-secondary-action">
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">add</i>
-          </button>
-        </span>
-      </li>
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          Bob Odenkirk
-        </span>
-        <span class="mdl-list__item-secondary-action">
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">add</i>
-          </button>
-        </span>
-      </li>
+      {{/each}}
     </ul>
   </div>
   <!-- Colored FAB button -->

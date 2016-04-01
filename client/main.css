@@ -5,10 +5,37 @@
   overflow: auto;
 }
 
+#search hr {
+  margin: 10px -5px;
+}
+
 #search__input-fields {
 }
 
-#search__suggest-keywords {
+.search__input-fields__title,
+.search__suggest-keywords__title {
+  font-size: 18px;
+}
+
+#search__suggest-keywords .mdl-list__item {
+  padding: 5px 10px;
+  height: 40px;
+  min-height: auto;
+}
+
+#search__suggest-keywords .mdl-list__item-primary-content {
+  font-size: 14px;
+  text-transform: capitalize;
+
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+#search__suggest-keywords .mdl-list__item-secondary-action {
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
 }
 
 #search-button {
@@ -18,19 +45,20 @@
 }
 
 #search-result {
-  padding: 30px;
+  padding: 50px 80px 120px 80px;
   background-color: #F2F2F2;
 }
 
 .search-result__title {
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .search-result__item {
   background-color: white;
   margin-bottom: 1px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 10px;
+  padding: 15px 25px;
   max-height: 30px;
   overflow: hidden;
 
@@ -39,6 +67,11 @@
   -ms-transition: margin 200ms ease, max-height 200ms ease;
   -o-transition: margin 200ms ease, max-height 200ms ease;
   transition: margin 200ms ease, max-height 200ms ease;
+}
+
+.search-result__item .search-result__item__title {
+  font-size: 16px;
+  text-transform: capitalize;
 }
 
 .search-result__item > .search-result__item__overview {
@@ -62,4 +95,44 @@
 /* .search-result__item:hover > .search-result__item__detail, */
 .search-result__item.search-result__item--active > .search-result__item__detail {
   display: block;
+}
+
+
+.sentence__token {
+
+}
+
+.sentence__token--entity {
+  color: #5BC0EB;
+}
+
+.sentence__token--em {
+  color: #9BC53D;
+}
+
+.sentence__token--vp {
+  color: #E55934;
+}
+
+.sentence__token--keyword {
+  color: #FA7921;
+}
+
+.sentence--selected {
+  font-weight: bold;
+}
+
+.search-result__item__detail__tokens {
+  font-weight: normal;
+  font-size: 1em;
+  -webkit-transition: font-size 200ms ease, font-weight 200ms ease;
+  -moz-transition: font-size 200ms ease, font-weight 200ms ease;
+  -ms-transition: font-size 200ms ease, font-weight 200ms ease;
+  -o-transition: font-size 200ms ease, font-weight 200ms ease;
+  transition: font-size 200ms ease, font-weight 200ms ease;
+}
+
+.search-result__item__detail__wrapper:hover > .search-result__item__detail__tokens {
+  font-weight: bold;
+  font-size: 1.2em;
 }

@@ -30,14 +30,22 @@ const selectItem = ($ele = null) => {
   }
 };
 
-let fakeData = new Array(100);
-for (let i = 0, n = fakeData.length; i < n; ++i) {
-  fakeData[i] = new ItemClass();
-}
+tpl.onCreated(function () {
+  // @type ReactiveVar
+  const resultData = this.data.rawData;
+
+  this.data.parsedItems = new ReactiveVar([]);
+
+  this.autorun((comp) => {
+    const parsedItems = resultData.get().map((rawItem) => new ItemClass(rawItem));
+    this.data.parsedItems.set(parsedItems);
+  });
+
+});
 
 tpl.helpers({
   listItems () {
-    return fakeData;
+    return this.parsedItems.get();
   }
 });
 

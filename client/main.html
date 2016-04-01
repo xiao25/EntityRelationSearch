@@ -11,12 +11,13 @@
       </div>
     </header>
 
+
     <div class="mdl-layout__drawer">
-      {{> search}}
+      {{> search rawData=suggestedKeywords}}
     </div>
 
     <main class="mdl-layout__content">
-      {{> search_result}}
+      {{> search_result rawData=resultData}}
     </main>
   </div>
 </body>

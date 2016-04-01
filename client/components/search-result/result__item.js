@@ -9,4 +9,6 @@ import './result__item.html';
 const tplName = 'search_result__item',
       tpl = Template[tplName];
 
+
+
 export { ItemClass };
