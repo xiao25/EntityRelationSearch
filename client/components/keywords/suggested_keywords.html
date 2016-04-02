@@ -1,0 +1,25 @@
+<template name="suggested_keywords">
+    <div id="suggested-keywords">
+        <span class="suggested-keywords__title">Suggested Keywords</span>
+
+        <div id="suggested-keywords__list">
+            {{#each suggestedKeywords}}
+                <div class="suggested-keyword {{#if isSelected}}suggested-keyword--selected{{/if}}">
+                    <span class="suggested-keyword__label">
+                        {{word}}
+                    </span>
+                    <span class="suggested-keyword__action">
+                      <button class="search__suggest-keywords__action-add mdl-button mdl-js-button mdl-button mdl-button--icon" data-keyword="{{word}}">
+                          <i id="{{word}}" class="material-icons">add</i>
+                          <div class="mdl-tooltip" for="{{word}}">
+                              Add to Query
+                          </div>
+                      </button>
+                    </span>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+

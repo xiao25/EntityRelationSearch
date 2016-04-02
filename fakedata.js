@@ -819,13 +819,9 @@ let rps = {
 let keywrods_suggested = [
 	'chronotherapy',
 	'serum',
-	'drug',
-	'therapy',
 	'patients',
 	'bronch',
 	'children',
-	'corticosteroids',
-	'pharmacokinetics',
 	'mice',
 	'aminophylline',
 	'kinetics',

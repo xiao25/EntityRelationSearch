@@ -1,23 +1,36 @@
 <head>
-  <title>simple</title>
+    <title>Entity Relation Search</title>
 </head>
 
 <body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <span class="mdl-layout-title">Entity Relation Search</span>
-      </div>
-    </header>
+<div>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                {{> search}}
+            </div>
 
+        </header>
 
-    <div class="mdl-layout__drawer">
-      {{> search rawData=suggestedKeywords}}
+        <main class="mdl-layout__content">
+
+            <div class="keyword_input">
+                {{> keyword_search}}
+            </div>
+
+            {{#if isLoading}}
+                <div id="search_loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+            {{else}}
+                <div class="suggestedKeywords_content">
+                    {{> suggested_keywords rawData = suggestedKeywords}}
+                </div>
+
+                <div class="search-result_content">
+                    {{> search_result rawData=resultData}}
+                </div>
+
+            {{/if}}
+        </main>
     </div>
-
-    <main class="mdl-layout__content">
-      {{> search_result rawData=resultData}}
-    </main>
-  </div>
+</div>
 </body>

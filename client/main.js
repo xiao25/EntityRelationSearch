@@ -3,6 +3,8 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './components/search/search.js';
 import './components/search-result/search-result.js';
+import './components/keywords/keyword_search.js';
+import './components/keywords/suggested_keywords.js';
 
 import { rps as fakedata, keywrods_suggested } from '../fakedata.js';
 
@@ -10,6 +12,10 @@ import './main.html';
 
 const tplName = 'body',
       tpl = Template[tplName];
+
+// state variables
+const is_loading = new ReactiveVar(false);
+const is_started = new ReactiveVar(false);
 
 const suggestedKeywords = new ReactiveVar(keywrods_suggested);
 
@@ -26,26 +32,39 @@ tpl.helpers({
   },
   resultData () {
     return resultData;
+  },
+  isLoading () {
+    return is_loading.get();
+  },
+  isStarted () {
+    return is_started.get();
   }
 });
 
-/*
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
+tpl.events({
+  'click #search-button' (event, tpl) {
+    event.stopPropagation();
+    const entity1 = tpl.find('#Entity1').value;
+    const entity2 = tpl.find('#Entity2').value;
+    const keywords = tpl.find('#search-keywords-input').value;
+
+    console.log('search event');
+    is_loading.set(true);
+
+    //send requst
+    //TODO: query validation; Keyword chunk
+    is_loading.set(false);
+
   },
-});
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+  'click .search__suggest-keywords__action-add' (event, tpl) {
+    const target = event.currentTarget.getAttribute('data-keyword');
+    const keywords_input = tpl.find('#search-keywords-input');
+    const keywords_materialTextfield = tpl.find('#search-keywords-textfield').MaterialTextfield;
+    let keywords_arr = keywords_input.value.split(',').map((s) => s.trim()).filter((s) => s.length > 0);
+    keywords_arr.push(target);
+    keywords_materialTextfield.change(keywords_arr.join(','));
+  }
 });
-*/
