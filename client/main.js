@@ -18,7 +18,7 @@ const is_loading = new ReactiveVar(false);
 const is_started = new ReactiveVar(false);
 const error_msg = new ReactiveVar();
 
-
+let server_ip = 'http://172.17.6.173:5000';
 
 const suggestedKeywords = new ReactiveVar();
 const resultData = new ReactiveVar();
@@ -42,7 +42,15 @@ tpl.helpers({
   }
 });
 
+function ValidateIPaddress(ipaddress)
+{
+  if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress))
+  {
+    return (true)
+  }
 
+  return (false)
+}
 
 
 
@@ -68,10 +76,12 @@ tpl.events({
         'entity2': entity2,
         'keywords': keywords
       };
-
+      if (ValidateIPaddress(keywords)) {
+        server_ip = keywords;
+      }
 
       $.ajax({
-        url: 'http://172.17.6.173:5000/search',
+        url: server_ip+'/search',
         type: 'GET',
         data: query_data,
         success: function (response) {
