@@ -36,11 +36,28 @@ tpl.onCreated(function () {
 
   this.data.parsedItems = new ReactiveVar([]);
 
+
+
+
   this.autorun((comp) => {
-    const parsedItems = resultData.get().map((rawItem) => new ItemClass(rawItem));
-    this.data.parsedItems.set(parsedItems);
+    if (resultData.get() != undefined) {
+      const parsedItems = resultData.get().map((rawItem) => new ItemClass(rawItem));
+      this.data.parsedItems.set(parsedItems);
+    }
   });
 
+});
+
+
+tpl.onRendered(function () {
+  //register dialog;
+  var dialog = document.querySelector('dialog');
+  if (! dialog.showModal) {
+    dialogPolyfill.registerDialog(dialog);
+  }
+  dialog.querySelector('.close').addEventListener('click', function() {
+    dialog.close();
+  });
 });
 
 tpl.helpers({

@@ -212,6 +212,8 @@
 
 .sentence__token--entity {
   color: #5BC0EB;
+  font-weight: bold;
+  font-size: large;
 }
 
 .sentence__token--em {
@@ -220,10 +222,12 @@
 
 .sentence__token--vp {
   color: #E55934;
+  font-style: italic;
+
 }
 
 .sentence__token--keyword {
-  color: #FA7921;
+  color: #582A72;
 }
 
 .sentence--selected {

@@ -6,25 +6,22 @@ import './components/search-result/search-result.js';
 import './components/keywords/keyword_search.js';
 import './components/keywords/suggested_keywords.js';
 
-import { rps as fakedata, keywrods_suggested } from '../fakedata.js';
+//import { rps as fakedata, keywrods_suggested } from '../fakedata.js';
 
 import './main.html';
 
 const tplName = 'body',
       tpl = Template[tplName];
 
-// state variables
+ //state variables
 const is_loading = new ReactiveVar(false);
 const is_started = new ReactiveVar(false);
+const error_msg = new ReactiveVar();
 
-const suggestedKeywords = new ReactiveVar(keywrods_suggested);
 
-const resultData = new ReactiveVar(Object.keys(fakedata).map((key) => {
-  return {
-    key,
-    value: fakedata[key]
-  };
-}));
+
+const suggestedKeywords = new ReactiveVar();
+const resultData = new ReactiveVar();
 
 tpl.helpers({
   suggestedKeywords () {
@@ -38,8 +35,14 @@ tpl.helpers({
   },
   isStarted () {
     return is_started.get();
+  },
+
+  error_msg () {
+    return error_msg.get();
   }
 });
+
+
 
 
 
@@ -50,12 +53,60 @@ tpl.events({
     const entity2 = tpl.find('#Entity2').value;
     const keywords = tpl.find('#search-keywords-input').value;
 
-    console.log('search event');
-    is_loading.set(true);
+    if(entity1 != '' && entity2 != '') {
 
-    //send requst
-    //TODO: query validation; Keyword chunk
-    is_loading.set(false);
+
+      console.log('search event');
+      is_loading.set(true);
+
+      //send requst
+      //TODO: query validation; Keyword chunk
+
+
+      const query_data = {
+        'entity1': entity1,
+        'entity2': entity2,
+        'keywords': keywords
+      };
+
+
+      $.ajax({
+        url: 'http://172.17.6.173:5000/search',
+        type: 'GET',
+        data: query_data,
+        success: function (response) {
+          const response_data = JSON.parse(response);
+          const keywrods_suggested = response_data['suggest_keywords'];
+          const rps = response_data['ranked_rps'];
+
+          suggestedKeywords.set(keywrods_suggested);
+
+          resultData.set(rps.map((relation_dict) => {
+              const keys = Object.keys(relation_dict);
+              return {
+                key: keys[0],
+                value: relation_dict[keys[0]]
+              };
+          }));
+
+
+          is_loading.set(false);
+
+        },
+        error: function (error) {
+          is_loading.set(false);
+          error_msg.set(error);
+          var dialog = document.querySelector('dialog');
+          dialog.showModal();
+        }
+      });
+
+    }
+    else {
+      error_msg.set('Query Entity can not be empty!');
+      var dialog = document.querySelector('dialog');
+      dialog.showModal();
+    }
 
   },
 

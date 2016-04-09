@@ -13,12 +13,16 @@ tpl.onCreated(function () {
   this.data.parsedItems = new ReactiveVar([]);
 
   this.autorun((comp) => {
-    this.data.parsedItems.set(suggestedKeywords.get().map((w) => {
-      return {
-        word: w,
-        isSelected: false
-      };
-    }));
+
+     if (suggestedKeywords.get() != undefined) {
+
+        this.data.parsedItems.set(suggestedKeywords.get().map((w) => {
+            return {
+              word: w,
+              isSelected: false
+            };
+      }));
+    }
   });
 });
 
