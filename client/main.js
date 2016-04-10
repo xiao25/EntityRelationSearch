@@ -18,7 +18,7 @@ const is_loading = new ReactiveVar(false);
 const is_started = new ReactiveVar(false);
 const error_msg = new ReactiveVar();
 
-let server_ip = 'http://172.17.6.173:5000';
+const server_ip = 'http://172.17.6.173:5000';
 
 const suggestedKeywords = new ReactiveVar();
 const resultData = new ReactiveVar();
@@ -76,12 +76,14 @@ tpl.events({
         'entity2': entity2,
         'keywords': keywords
       };
+
+      let ip_add = server_ip;
       if (ValidateIPaddress(keywords)) {
-        server_ip = keywords;
+        ip_add = 'http://'+keywords+':5000';
       }
 
       $.ajax({
-        url: server_ip+'/search',
+        url: ip_add+'/search',
         type: 'GET',
         data: query_data,
         success: function (response) {
