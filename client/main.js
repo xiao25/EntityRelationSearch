@@ -59,7 +59,7 @@ tpl.events({
     event.stopPropagation();
     const entity1 = tpl.find('#Entity1').value;
     const entity2 = tpl.find('#Entity2').value;
-    const keywords = tpl.find('#search-keywords-input').value;
+    let keywords = tpl.find('#search-keywords-input').value;
 
     if(entity1 != '' && entity2 != '') {
 
@@ -71,16 +71,19 @@ tpl.events({
       //TODO: query validation; Keyword chunk
 
 
+
+
+      let ip_add = server_ip;
+      if (ValidateIPaddress(keywords)) {
+        ip_add = 'http://'+keywords+':5000';
+        keywords = '';
+      }
+
       const query_data = {
         'entity1': entity1,
         'entity2': entity2,
         'keywords': keywords
       };
-
-      let ip_add = server_ip;
-      if (ValidateIPaddress(keywords)) {
-        ip_add = 'http://'+keywords+':5000';
-      }
 
       $.ajax({
         url: ip_add+'/search',
